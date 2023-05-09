@@ -33,11 +33,17 @@ s1 = str(input("Enter string one for comparison: "))
 s2 = str(input("Enter string two for comparison: "))
 
 def compareTo(s1, s2):
-    if s1 < s2:
-        return (0-1)
-    elif s1 == s2:
-        return (0)
-    elif s1 > s2:
-        return (0+1)
+    if len(s1) < len(s2):
+        return -1
+    elif len(s1) > len(s2):
+        return 1
+    elif len(s1) == 0 and len(s2) == 0:
+        return 0
     else:
-        return ("Not a string")
+        if s1[0] < s2[0]:
+            return -1
+        elif s1[0] > s2[0]:
+            return 1
+        else:
+            return compareTo(s1[1:], s2[1:])
+print(compareTo(s1, s2))
